@@ -30,6 +30,7 @@ namespace BaseConverter
                 Console.WriteLine("Introduceti numarul in baza {0}", b1);
                 
                 numar = Console.ReadLine();
+                numar = numar.ToUpper();
                 bool b = ValidareNumar(numar, b1);
                 if (b)
                 {
@@ -47,6 +48,22 @@ namespace BaseConverter
             Console.WriteLine("Numarul in baza 10 este: {0}", nb10);
             //BigInteger big = new BigInteger(12345678);
             //Console.WriteLine(BigInteger.Pow(big, 5));
+
+            string value = ConvertToTarget(nb10, b2);
+            Console.WriteLine("Numarul in baza {0} este: {1}", b2, value);
+        }
+
+        private static string ConvertToTarget(int n, int b2)
+        {
+            string result = "";
+            int c;
+            while (n > 0)
+            {
+                c = n % b2;
+                result = result.Insert(0, digits[c].ToString()); // '0' "0"
+                n = n / b2;
+            }
+            return result;
         }
 
         private static int ConvertTo10(string numar, int b1)
@@ -86,15 +103,7 @@ namespace BaseConverter
             return true;
         }
 
-        private static void ConvertFrom10(int n, int b2)
-        {
-            while (n != 0)
-            {
-                Console.WriteLine(n % b2);
-                n = n / 2;
-            }
-        }
-
+        
        
     }
 }
