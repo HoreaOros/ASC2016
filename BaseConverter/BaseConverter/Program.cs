@@ -99,11 +99,7 @@ namespace BaseConverter
                 if (!gasit)
                     return false;
             }
-
             return true;
         }
-
-        
-       
     }
 }
